@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'budgeting_application';
+  showFiller = false;
 }

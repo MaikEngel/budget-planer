@@ -1,0 +1,15 @@
+$headerColor: #0a2546;
+$contentContainerColor: #c5c5bb;
+$sidenavColor: #1D3754;
+$letterColor: #c58b2d;
+$secondLetterColor: #c29e59;
+$iconColor: #c58b2d;
+$textColor: #0e1e2d;
+
+.dashboardContainer {
+    min-height: calc(99vh - 96px);
+
+    h1 {
+        color: $textColor;
+    }
+}
