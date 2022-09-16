@@ -1,0 +1,245 @@
+<div>
+  <mat-accordion class="example-headers-align">
+
+    <h2>Datum</h2>
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Titel
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>date_range</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Titel</mat-label>
+        <input matInput [(ngModel)]="category" placeholder="Januar 2022">
+      </mat-form-field>
+
+      <mat-action-row>
+        <button mat-button color="primary" (click)="nextStep()">Weiter</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+
+    <h2>Einnahmen</h2>
+    <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Einnahmen:
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>payments</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div *ngFor="let income of incomes; let i = index">
+        <mat-form-field appearance="fill">
+          <mat-label>Kategorie</mat-label>
+          <input type="text" matInput id="{{income.categoryId}}">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Betrag</mat-label>
+          <input matInput type="number" min="0.01"  id="{{income.id}}">
+        </mat-form-field>
+
+        <button class="removeButton" (click)="deleteRow(i, incomes)" mat-mini-fab>
+          <mat-icon>remove</mat-icon>
+        </button>
+      </div>
+
+      <button class="addButton" mat-mini-fab (click)="addRow(incomes, 'income')">
+        <mat-icon>add</mat-icon>
+      </button>
+
+      <mat-action-row>
+        <button mat-button color="warn" (click)="prevStep()">Zurück</button>
+        <button mat-button color="primary" (click)="nextStep()">Weiter</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <h2>Ausgaben</h2>
+    <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Wohnen
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>house</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div *ngFor="let living of livings; let i = index">
+        <mat-form-field appearance="fill">
+          <mat-label>Kategorie</mat-label>
+          <input matInput id="{{living.categoryId}}">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Betrag</mat-label>
+          <input matInput type="number" min="0.01" id="{{living.id}}">
+        </mat-form-field>
+
+        <button class="removeButton" (click)="deleteRow(i, livings)" mat-mini-fab>
+          <mat-icon>remove</mat-icon>
+        </button>
+      </div>
+
+      <button class="addButton" mat-mini-fab (click)="addRow(livings, 'living')">
+        <mat-icon>add</mat-icon>
+      </button>
+
+      <mat-action-row>
+        <button mat-button color="warn" (click)="prevStep()">Zurück</button>
+        <button mat-button color="primary" (click)="nextStep()">Weiter</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Einkaufen
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>store</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div *ngFor="let shopping of shoppings; let i = index">
+        <mat-form-field appearance="fill">
+          <mat-label>Kategorie</mat-label>
+          <input matInput id="{{shopping.categoryId}}">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Betrag</mat-label>
+          <input matInput type="number" min="0.01" id="{{shopping.id}}">
+        </mat-form-field>
+
+        <button class="removeButton" (click)="deleteRow(i, shoppings)" mat-mini-fab>
+          <mat-icon>remove</mat-icon>
+        </button>
+      </div>
+
+      <button class="addButton" mat-mini-fab (click)="addRow(shoppings, 'shopping')">
+        <mat-icon>add</mat-icon>
+      </button>
+
+      <mat-action-row>
+        <button mat-button color="warn" (click)="prevStep()">Zurück</button>
+        <button mat-button color="primary" (click)="nextStep()">Weiter</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Transport
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>directions_car</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div *ngFor="let ride of rides; let i = index">
+        <mat-form-field appearance="fill">
+          <mat-label>Kategorie</mat-label>
+          <input matInput id="{{ride.categoryId}}">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Betrag</mat-label>
+          <input matInput type="number" min="0.01" id="{{ride.id}}">
+        </mat-form-field>
+
+        <button class="removeButton" (click)="deleteRow(i, rides)" mat-mini-fab>
+          <mat-icon>remove</mat-icon>
+        </button>
+      </div>
+
+      <button class="addButton" mat-mini-fab (click)="addRow(rides, 'ride')">
+        <mat-icon>add</mat-icon>
+      </button>
+
+      <mat-action-row>
+        <button mat-button color="warn" (click)="prevStep()">Zurück</button>
+        <button mat-button color="primary" (click)="nextStep()">Weiter</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step === 5" (opened)="setStep(5)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Unterhaltung
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>casino</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div *ngFor="let entertainment of entertainments; let i = index">
+        <mat-form-field appearance="fill">
+          <mat-label>Kategorie</mat-label>
+          <input matInput id="{{entertainment.categoryId}}">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Betrag</mat-label>
+          <input matInput type="number" min="0.01" id="{{entertainment.id}}">
+        </mat-form-field>
+
+        <button class="removeButton" (click)="deleteRow(i, entertainments)" mat-mini-fab>
+          <mat-icon>remove</mat-icon>
+        </button>
+      </div>
+
+      <button class="addButton" mat-mini-fab (click)="addRow(entertainments, 'entertainment')">
+        <mat-icon>add</mat-icon>
+      </button>
+
+      <mat-action-row>
+        <button mat-button color="warn" (click)="prevStep()">Zurück</button>
+        <button mat-button color="primary" (click)="nextStep()">Weiter</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step === 6" (opened)="setStep(6)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Sonstiges
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>shuffle</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div *ngFor="let other of others; let i = index">
+        <mat-form-field appearance="fill">
+          <mat-label>Kategorie</mat-label>
+          <input matInput id="{{other.categoryId}}">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Betrag</mat-label>
+          <input matInput type="number" min="0.01" id="{{other.id}}">
+        </mat-form-field>
+
+        <button class="removeButton" (click)="deleteRow(i, others)" mat-mini-fab>
+          <mat-icon>remove</mat-icon>
+        </button>
+      </div>
+
+      <button class="addButton" mat-mini-fab (click)="addRow(others, 'other')">
+        <mat-icon>add</mat-icon>
+      </button>
+
+      <mat-action-row>
+        <button mat-button color="warn" (click)="prevStep()">Zurück</button>
+        <button mat-button color="primary" (click)="addBudgetPlan()">Hinzufügen</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+  </mat-accordion>
+</div>

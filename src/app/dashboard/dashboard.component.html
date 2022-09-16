@@ -1,5 +1,22 @@
 <div class="dashboardContainer">
     <h1>Übersicht</h1>
-
-
+    <div>
+        <h2>50.000€</h2>
+        <mat-accordion *ngFor="let test of tests">
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{test.name}}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Januar
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <p>This is the primary content of the panel.</p>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+    <button mat-fab class="addButton" mat-raised-button (click)="openDialog()">
+        <mat-icon><b>add</b></mat-icon>
+    </button>
 </div>

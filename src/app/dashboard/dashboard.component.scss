@@ -12,4 +12,20 @@ $textColor: #0e1e2d;
     h1 {
         color: $textColor;
     }
+
+    div {
+        text-align: center;
+    }
+}
+
+.mat-form-field+.mat-form-field {
+    margin-left: 8px;
+}
+
+.addButton {
+    background-color: $headerColor;
+    color: $iconColor;
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
 }

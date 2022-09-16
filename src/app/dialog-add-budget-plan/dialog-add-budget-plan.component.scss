@@ -1,0 +1,27 @@
+$headerColor: #0a2546;
+$contentContainerColor: #c5c5bb;
+$sidenavColor: #1D3754;
+$letterColor: #c58b2d;
+$secondLetterColor: #c29e59;
+$iconColor: #c58b2d;
+$textColor: #0e1e2d;
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.example-headers-align .mat-form-field+.mat-form-field {
+  margin-left: 8px;
+}
+
+.addButton {
+  background-color: $headerColor;
+  color: $iconColor;
+}
+
+.removeButton {
+  background-color: lightgray;
+  color: gray;
+  margin-left: 8px;
+}
